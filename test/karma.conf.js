@@ -16,7 +16,7 @@ module.exports = function (config) {
         frameworks: [
             "jasmine"
         ],
-        reporters: ['progress', 'coverage'],
+        reporters: ['progress', 'junit', 'coverage'],
         // list of files / patterns to load in the browser
         files: [
             // bower:js
@@ -54,6 +54,7 @@ module.exports = function (config) {
         plugins: [
             "karma-jasmine",
             "karma-coverage",
+            "karma-junit-reporter",
             "karma-phantomjs-launcher"
         ],
         // Continuous Integration mode
@@ -76,7 +77,9 @@ module.exports = function (config) {
         },
         // optionally, configure the reporter        
         junitReporter: {
-            outputFile: 'qa/test-results.xml'
+            outputDir: 'qa',
+            outputFile: 'test-results.xml',
+            useBrowserName: false
         },
         coverageReporter: {
             reporters: [
